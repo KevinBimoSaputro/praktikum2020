@@ -1,0 +1,97 @@
+---
+title: "Latihan3_123190126"
+author: "Kevin Bimo Saputro"
+date: "9/29/2021"
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+---
+
+### NO 1
+#### mengurutkan data dari terkecil ke terbesar
+```{r}
+library(dslabs) 
+data("murders")
+pop <- murders$population
+class(pop)
+
+sort(pop)
+
+min(murders[["population"]])
+```
+
+### NO 2
+#### menampilkan index terkecil
+```{r}
+indexpop <- order(pop)
+indexpop
+min(indexpop)
+min(pop[indexpop])
+```
+
+### NO 3
+#### Menggunakan fungsi which.min untuk menampilkan indeks data terkecil dari populasi
+```{r}
+i_min <- which.min(pop) 
+pop[i_min] 
+```
+
+### NO 4
+#### Menmapilkan nama negara dengan populasi terkecil
+```{r}
+murders$population[i_min] 
+murders[i_min, 1]
+```
+
+### NO 5
+#### Menggunakan fungsi rank untuk menentukan peringkat populasi dan menyimpannya pada objek "ranks"
+```{r}
+temp <- c(35, 88, 42, 84, 81, 30) 
+city <- c("Beijing", "Lagos", "Paris", "Rio de Janeiro", 
+"San Juan", "Toronto") 
+city_temps <- data.frame(name = city, temperature = temp)
+ranks <- rank (city_temps$temp)
+```
+#### membuat data frame baru "my_df"
+```{r}
+Peringkat <- c(2, 1, 3, 6, 5, 4) 
+NegaraBagian <- c("New South Wales", "Northern Territory", "Queensland", "Tasmania", "Victoria", "Western Australia")
+```
+
+### NO 6
+#### Membuat objek "ind" untuk mengurutkan my_df dengan menggunakan fungsi order
+```{r}
+Peringkat <- c(2, 1, 3, 6, 5, 4) 
+NegaraBagian <- c("New South Wales", "Northern Territory", "Queensland", "Tasmania", "Victoria", "Western Australia")
+Populasi <- c(205113, 211290, 201555, 10954, 134021, 167280) 
+my_df <- data.frame(NegaraBagian = NegaraBagian, Peringkat = Peringkat, Populasi = Populasi)
+ind <- order (my_df$Populasi)
+my_df[ind, 3]
+```
+
+### NO 7
+#### Membuat plot dalam skala log10
+```{r}
+population_in_millions <- murders$population/10^10 
+total_gun_murders <- murders$total 
+plot(population_in_millions, total_gun_murders)
+```
+
+### NO 8
+#### Membuat histogram dari populasi negara bagian
+```{r}
+PopulasiNegaraBagian <- (murders$population/10000000000)
+hist(PopulasiNegaraBagian)
+```
+
+### NO 9
+#### Menghasilkan boxplot dari populasi negara berdasarkan wilayahnya
+```{r}
+murders$rate <- with(murders, total / population * 10000000000) 
+boxplot(rate~region, data = murders) 
+
+```
+
+
+
