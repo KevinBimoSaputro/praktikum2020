@@ -33,7 +33,9 @@ murders %>%
      exp
 ```
 
-4. 
+4. Gunakan  map_df  untuk  membuat  data frame  yang  terdiri  dari  tiga  kolom:  ‘n’,  ‘s_n’,  dan 
+‘s_n_2’. Kolom pertama harus berisi angka 1 hingga 100. Kolom kedua dan ketiga masing-
+masing harus berisi penjumlahan 1 hingga n, dimana n menyatakan jumlah baris. 
 ```{r}
 library(purrr)
 compute_s_n <- function(n){ 
